@@ -67,7 +67,7 @@
         <div class="rounded-3xl border border-zinc-200 dark:border-zinc-800 p-2 shadow-sm bg-white/50 dark:bg-zinc-950/50">
           <div id="demo" class="aspect-video rounded-2xl overflow-hidden bg-black">
             <iframe class="w-full h-full"
-              src="https://www.youtube-nocookie.com/embed/0Qh6rBteXz8?rel=0"
+              src="https://www.youtube-nocookie.com/embed/tky2N0JVKPs?rel=0"
               title="DeSocial Demo" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
@@ -75,7 +75,7 @@
           </div>
           <div class="px-2 py-3 text-xs text-zinc-500 dark:text-zinc-400">
             Watch without leaving this page. Original link:
-            <a class="underline" href="https://youtu.be/0Qh6rBteXz8" target="_blank" rel="noopener noreferrer">youtu.be/0Qh6rBteXz8</a>
+            <a class="underline" href="https://youtu.be/tky2N0JVKPs" target="_blank" rel="noopener noreferrer">youtu.be/0Qh6rBteXz8</a>
           </div>
         </div>
       </div>
@@ -148,27 +148,49 @@
         </div>
         <div class="lg:w-3/5 w-full rounded-2xl border border-zinc-200 dark:border-zinc-800 p-4 bg-white/50 dark:bg-zinc-950/50 overflow-x-auto">
           <pre class="mermaid text-sm leading-6">flowchart TD
-    A[Register/Login] --> B[Create Profile]
-    B --> C[Create/Edit/Delete Post]
-    C --> D[Feed Updates]
-    D --> E[Like/Comment/Repost]
-    D --> F[Follow/Unfollow]
-    D --> G[Real-time Messaging]
+    %% Entry & Auth
+    I[Create Internet Identity] --> A[Register / Login]
+    A --> H[Home / Feed]
 
-    M((Global Menu))
+    %% Global / Side Menu (always available)
+    M((Menu))
+    H -.-> M
     A -.-> M
-    B -.-> M
-    C -.-> M
-    D -.-> M
-    E -.-> M
-    F -.-> M
-    G -.-> M
-    M --> H[View Profile]
-    M --> I[Notifications]
 
-    E --> I
-    F --> I
-    G --> I</pre>
+    %% Menu Items
+    M --> H
+    M --> CP[Create Post]
+    M --> EP[Edit Profile]
+    M --> EX[Explore Users]
+    M --> MSG[Messages]
+    M --> NTF[Notifications]
+    M --> FF[Followers & Following]
+    M --> LO[Log Out]
+
+    %% Post lifecycle from Home/Feed
+    H --> P1[View Post]
+    P1 --> P2[Edit Post]
+    P1 --> P3[Delete Post]
+
+    %% Interactions
+    P1 --> LCR[Like / Comment / Repost]
+
+    %% Explore → Other user
+    EX --> OU[Open Another User's Profile]
+    OU --> FF2[Follow / Unfollow]
+    OU --> OPV[View Their Posts]
+    OPV --> P1
+
+    %% Edit Profile
+    EP --> EP_DONE[Profile Updated]
+
+    %% Messages & Notifications
+    MSG --> NTF
+    LCR --> NTF
+    FF2 --> NTF
+
+    %% Terminal
+    LO --> X((Session End))</pre>
         </div>
       </div>
     </div>
