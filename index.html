@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +13,7 @@
   <script>
     const theme = localStorage.getItem('theme') || 'light';
     if (theme === 'dark') document.documentElement.classList.add('dark');
-    function toggleTheme(){
+    function toggleTheme() {
       const isDark = document.documentElement.classList.toggle('dark');
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
     }
@@ -23,27 +24,72 @@
   <script>mermaid.initialize({ startOnLoad: true, securityLevel: 'loose', theme: 'neutral' });</script>
 
   <style>
-    html { scroll-behavior: smooth; }
-    .container { max-width: 1100px; }
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1100px;
+    }
+
+    /* pulse for header CTA */
+    .pulse {
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.04)
+      }
+    }
+
+    /* floating action button */
+    .fab {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 60;
+    }
+
+    /* Ensure anchors land below sticky header */
+    section {
+      scroll-margin-top: 96px
+    }
   </style>
-  <!-- Ensure anchors land below sticky header -->
-  <style>section{scroll-margin-top:96px}</style>
 </head>
+
 <body class="bg-white text-gray-800 dark:bg-zinc-900 dark:text-zinc-100">
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur border-b border-zinc-200 dark:border-zinc-800">
+  <header
+    class="sticky top-0 z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur border-b border-zinc-200 dark:border-zinc-800">
     <div class="container mx-auto px-4 py-3 flex items-center justify-between">
       <a href="#top" class="text-xl font-semibold tracking-tight">DeSocial</a>
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
         <a href="#demo" class="hover:opacity-80">Demo</a>
         <a href="#features" class="hover:opacity-80">Features</a>
         <a href="#flow" class="hover:opacity-80">Project Flow</a>
+        <a href="#live" class="hover:opacity-80">Live</a>
+        <a href="#challenges" class="hover:opacity-80">Challenges</a>
+        <a href="#solutions" class="hover:opacity-80">Solutions</a>
         <a href="#setup" class="hover:opacity-80">Setup</a>
         <a href="#tech" class="hover:opacity-80">Tech Stack</a>
-        <a href="https://github.com/parimal-art/On-Chain-Social-Network" target="_blank" rel="noopener noreferrer" class="hover:opacity-80">GitHub</a>
+        <a href="https://github.com/parimal-art/On-Chain-Social-Network" target="_blank" rel="noopener noreferrer"
+          class="hover:opacity-80">GitHub</a>
       </nav>
       <div class="flex items-center gap-3">
-        <a id="watchDemoBtn" href="#demo" class="px-3 py-1.5 rounded-xl bg-black text-white text-sm hover:opacity-90 dark:bg-white dark:text-black">Watch Demo</a>
+        <button id="themeBtn"
+          class="px-3 py-1.5 rounded-xl border border-zinc-300 dark:border-zinc-700 text-sm hover:bg-zinc-50 dark:hover:bg-zinc-800">Toggle
+          Theme</button>
+        <a href="https://qcein-jaaaa-aaaad-qhoxa-cai.icp0.io/" target="_blank" rel="noopener noreferrer"
+          class="px-3 py-1.5 rounded-xl bg-green-600 text-white text-sm hover:bg-green-700 shadow pulse">
+          🚀 Explore Live
+        </a>
       </div>
     </div>
   </header>
@@ -54,32 +100,58 @@
       <div class="grid md:grid-cols-2 gap-10 items-center">
         <div>
           <h1 class="text-3xl md:text-5xl font-bold leading-tight">Decentralized Social Media on ICP</h1>
-          <p class="mt-4 text-lg text-zinc-600 dark:text-zinc-300">Users own identity, data, and content. Real-time interactions. No central authority.</p>
-          <div class="mt-6 flex gap-3">
-            <a href="#flow" class="px-4 py-2 rounded-2xl bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200">View Project Flow</a>
-            <a href="#features" class="px-4 py-2 rounded-2xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800">Explore Features</a>
+          <p class="mt-4 text-lg text-zinc-600 dark:text-zinc-300">Users own identity, data, and content. Real-time
+            interactions. No central authority.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#flow"
+              class="px-4 py-2 rounded-2xl bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200">View
+              Project Flow</a>
+            <a href="#challenges"
+              class="px-4 py-2 rounded-2xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800">See
+              Challenges</a>
+            <a href="#solutions"
+              class="px-4 py-2 rounded-2xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800">Our
+              Approach</a>
+            <a href="https://qcein-jaaaa-aaaad-qhoxa-cai.icp0.io/" target="_blank" rel="noopener noreferrer"
+              class="px-4 py-2 rounded-2xl bg-green-600 text-white hover:bg-green-700">🌐 Try Live Now</a>
           </div>
-          <div class="mt-6 text-sm text-zinc-500 dark:text-zinc-400">Built with Rust canisters (ICP) + React.js • Candid • Sharded canisters for scale</div>
+          <div class="mt-6 text-sm text-zinc-500 dark:text-zinc-400">Built with Rust canisters (ICP) + React.js • Candid
+            • Sharded canisters for scale</div>
         </div>
 
         <!-- Demo -->
-        <div class="rounded-3xl border border-zinc-200 dark:border-zinc-800 p-2 shadow-sm bg-white/50 dark:bg-zinc-950/50">
+        <div
+          class="rounded-3xl border border-zinc-200 dark:border-zinc-800 p-2 shadow-sm bg-white/50 dark:bg-zinc-950/50">
           <div id="demo" class="aspect-video rounded-2xl overflow-hidden bg-black">
-            <iframe class="w-full h-full"
-              src="https://www.youtube-nocookie.com/embed/tky2N0JVKPs?rel=0"
+            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/tky2N0JVKPs?rel=0"
               title="DeSocial Demo" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen loading="lazy"></iframe>
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
           </div>
           <div class="px-2 py-3 text-xs text-zinc-500 dark:text-zinc-400">
             Watch without leaving this page. Original link:
-            <a class="underline" href="https://youtu.be/tky2N0JVKPs" target="_blank" rel="noopener noreferrer">youtu.be/0Qh6rBteXz8</a>
+            <a class="underline" href="https://youtu.be/tky2N0JVKPs" target="_blank"
+              rel="noopener noreferrer">youtu.be/0Qh6rBteXz8</a>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- 🚀 Live Experience -->
+  <!-- <section id="live" class="border-t border-zinc-200 dark:border-zinc-800">
+    <div class="container mx-auto px-4 py-14 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold">🚀 Live Experience</h2>
+      <p class="mt-3 text-zinc-600 dark:text-zinc-300">Explore DeSocial on-chain right now:</p>
+      <div class="mt-6 flex justify-center">
+        <a href="https://qcein-jaaaa-aaaad-qhoxa-cai.icp0.io/" target="_blank" rel="noopener noreferrer"
+          class="px-6 py-3 rounded-2xl bg-green-600 text-white hover:bg-green-700 font-medium inline-flex items-center gap-2 shadow-lg">
+          🌐 Open DeSocial App
+        </a>
+      </div>
+      <p class="mt-4 text-xs text-zinc-500 dark:text-zinc-400">Live on ICP • Always available</p>
+    </div>
+  </section> -->
 
   <!-- Features -->
   <section id="features" class="border-t border-zinc-200 dark:border-zinc-800">
@@ -100,12 +172,14 @@
         <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/50">
           <div class="text-2xl">⚡</div>
           <h3 class="mt-3 font-semibold">Real-time Interactions</h3>
-          <p class="text-sm text-zinc-600 dark:text-zinc-400">Likes, comments, reposts, and messaging update instantly.</p>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">Likes, comments, reposts, and messaging update instantly.
+          </p>
         </div>
         <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/50">
           <div class="text-2xl">🔔</div>
           <h3 class="mt-3 font-semibold">Notifications</h3>
-          <p class="text-sm text-zinc-600 dark:text-zinc-400">Triggered by Likes/Comments/Reposts, Follows, and Messages.</p>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">Triggered by Likes/Comments/Reposts, Follows, and
+            Messages.</p>
         </div>
         <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/50">
           <div class="text-2xl">🧩</div>
@@ -115,7 +189,8 @@
         <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/50">
           <div class="text-2xl">🛡️</div>
           <h3 class="mt-3 font-semibold">Secure & Scalable</h3>
-          <p class="text-sm text-zinc-600 dark:text-zinc-400">Rust + ICP with sharded canisters. No single point of failure.</p>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">Rust + ICP with sharded canisters. No single point of
+            failure.</p>
         </div>
       </div>
     </div>
@@ -139,13 +214,18 @@
           </ul>
           <!-- small badges to fill space -->
           <div class="mt-5 grid grid-cols-2 gap-3 text-sm">
-            <div class="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40">✅ On-chain Ownership</div>
-            <div class="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40">⚡ Real-time UX</div>
-            <div class="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40">🔔 Event-based Alerts</div>
-            <div class="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40">🧩 Open APIs</div>
+            <div class="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40">✅
+              On-chain Ownership</div>
+            <div class="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40">⚡
+              Real-time UX</div>
+            <div class="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40">🔔
+              Event-based Alerts</div>
+            <div class="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40">🧩
+              Open APIs</div>
           </div>
         </div>
-        <div class="lg:w-3/5 w-full rounded-2xl border border-zinc-200 dark:border-zinc-800 p-4 bg-white/50 dark:bg-zinc-950/50 overflow-x-auto">
+        <div
+          class="lg:w-3/5 w-full rounded-2xl border border-zinc-200 dark:border-zinc-800 p-4 bg-white/50 dark:bg-zinc-950/50 overflow-x-auto">
           <pre class="mermaid text-sm leading-6">flowchart TD
     %% Entry & Auth
     I[Create Internet Identity] --> A[Register / Login]
@@ -202,6 +282,137 @@
     </div>
   </section>
 
+  <!-- Remaining Challenges -->
+  <section id="challenges" class="border-t border-zinc-200 dark:border-zinc-800">
+    <div class="container mx-auto px-4 py-14">
+      <div class="flex items-center justify-between gap-4 flex-wrap">
+        <h2 class="text-2xl md:text-3xl font-bold">⚠️ Remaining Challenges</h2>
+        <a href="#solutions" class="text-sm underline hover:opacity-80">Skip to Solutions →</a>
+      </div>
+      <p class="mt-2 text-zinc-600 dark:text-zinc-300">
+        Even though DeSocial solves the issues of centralized platforms, being fully decentralized also brings new
+        challenges.
+      </p>
+
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-950/60">
+          <div class="text-2xl">🚫</div>
+          <h3 class="mt-3 font-semibold">Content Misuse</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">
+            Users may upload nudity, hate speech, or illegal content.
+          </p>
+        </div>
+        <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-950/60">
+          <div class="text-2xl">🤖</div>
+          <h3 class="mt-3 font-semibold">Spam & Bots</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">
+            Without central moderation, fake accounts or spam could flood the network.
+          </p>
+        </div>
+        <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-950/60">
+          <div class="text-2xl">💰</div>
+          <h3 class="mt-3 font-semibold">Scalability Costs</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">
+            Storing heavy media (images, videos) directly on-chain can be expensive.
+          </p>
+        </div>
+        <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-950/60">
+          <div class="text-2xl">🧑‍🤝‍🧑</div>
+          <h3 class="mt-3 font-semibold">User Safety</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">
+            Messaging and interactions could be misused for harassment if not moderated properly.
+          </p>
+        </div>
+        <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-950/60">
+          <div class="text-2xl">⚖️</div>
+          <h3 class="mt-3 font-semibold">Moderation vs Freedom</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">
+            Striking a balance between free speech and responsible use is difficult.
+          </p>
+        </div>
+        <!-- Fixed: Proper wrapper for last card -->
+        <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-950/60">
+          <div class="text-2xl">⚠️</div>
+          <h3 class="mt-3 font-semibold">Platform Misuse</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">
+            Users could exploit the app for scams, spreading misinformation, or manipulating communities.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 text-xs text-zinc-500 dark:text-zinc-400">
+        We approach these with transparent, community-first tooling.
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Proposed Solutions -->
+  <section id="solutions" class="border-t border-zinc-200 dark:border-zinc-800">
+    <div class="container mx-auto px-4 py-14">
+      <h2 class="text-2xl md:text-3xl font-bold">🛠️ Proposed Solutions</h2>
+      <p class="mt-2 text-zinc-600 dark:text-zinc-300">Our plan mixes on-chain governance with practical user tools.</p>
+
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-950/60">
+          <div class="text-2xl">🗳️</div>
+          <h3 class="mt-3 font-semibold">Community Governance</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">DAO-based moderation where users can vote/flag harmful
+            content.</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-950/60">
+          <div class="text-2xl">🏷️</div>
+          <h3 class="mt-3 font-semibold">Content Labeling</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">Mark sensitive/NSFW content rather than removing it; users
+            choose what to see.</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-950/60">
+          <div class="text-2xl">⭐</div>
+          <h3 class="mt-3 font-semibold">Reputation & Tokenomics</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">Bad actors lose reputation/tokens; good actors earn
+            rewards for positive behavior.</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-950/60">
+          <div class="text-2xl">🛡️</div>
+          <h3 class="mt-3 font-semibold">User Safety Tools</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">Block/report, customizable filters, and strong privacy
+            settings.</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-950/60">
+          <div class="text-2xl">📂</div>
+          <h3 class="mt-3 font-semibold">Hybrid Storage</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">ICP canisters for metadata + IPFS/Arweave for large media;
+            community-driven filters.</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-950/60">
+          <div class="text-2xl">🧩</div>
+          <h3 class="mt-3 font-semibold">Filter Subscriptions</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">Users/communities subscribe to moderation lists
+            (family-friendly, strict, or free-speech).</p>
+        </div>
+      </div>
+
+      <!-- CTA panel -->
+      <div
+        class="mt-8 p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-gradient-to-br from-white to-zinc-50 dark:from-zinc-950 dark:to-zinc-900">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div>
+            <h3 class="font-semibold">Want to help shape moderation?</h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">Join governance discussions and propose rules the
+              community can vote on.</p>
+          </div>
+          <div class="flex gap-3">
+            <a href="#challenges"
+              class="px-4 py-2 rounded-2xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-sm">Review
+              Challenges</a>
+            <a href="https://qcein-jaaaa-aaaad-qhoxa-cai.icp0.io/" target="_blank" rel="noopener noreferrer"
+              class="px-4 py-2 rounded-2xl bg-green-600 text-white hover:bg-green-700 text-sm">Open Live</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Setup -->
   <section id="setup" class="border-t border-zinc-200 dark:border-zinc-800">
     <div class="container mx-auto px-4 py-14">
@@ -214,7 +425,8 @@ dfx --version</code></pre>
         </div>
         <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/50">
           <h3 class="font-semibold">Start Local Replica</h3>
-          <pre class="mt-3 p-3 bg-zinc-900 text-zinc-100 rounded-xl overflow-auto"><code>dfx start --background</code></pre>
+          <pre
+            class="mt-3 p-3 bg-zinc-900 text-zinc-100 rounded-xl overflow-auto"><code>dfx start --background</code></pre>
         </div>
         <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/50">
           <h3 class="font-semibold">Deploy Canisters</h3>
@@ -242,16 +454,27 @@ dfx stop                   # Stop replica</code></pre>
     <div class="container mx-auto px-4 py-14">
       <h2 class="text-2xl md:text-3xl font-bold">Tech Stack</h2>
       <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-        <div class="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">Frontend: <span class="font-semibold">React.js</span></div>
-        <div class="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">Backend: <span class="font-semibold">Rust + ic-cdk</span></div>
-        <div class="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">Interface: <span class="font-semibold">Candid</span></div>
-        <div class="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">Dev Tools: <span class="font-semibold">dfx, npm, cargo</span></div>
+        <div class="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">Frontend: <span
+            class="font-semibold">React.js</span></div>
+        <div class="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">Backend: <span
+            class="font-semibold">Rust + ic-cdk</span></div>
+        <div class="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">Interface: <span
+            class="font-semibold">Candid</span></div>
+        <div class="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">Dev Tools: <span
+            class="font-semibold">dfx, npm, cargo</span></div>
       </div>
       <div class="mt-6 text-sm">GitHub Repo:
-        <a class="underline" href="https://github.com/parimal-art/On-Chain-Social-Network" target="_blank" rel="noopener noreferrer">parimal-art/On-Chain-Social-Network</a>
+        <a class="underline" href="https://github.com/parimal-art/DeSocial" target="_blank"
+          rel="noopener noreferrer">parimal-art/DeSocial</a>
       </div>
     </div>
   </section>
+
+  <!-- Floating Live CTA -->
+  <a href="https://qcein-jaaaa-aaaad-qhoxa-cai.icp0.io/" target="_blank" rel="noopener noreferrer"
+    class="fab inline-flex items-center gap-2 px-4 py-3 rounded-full bg-green-600 text-white shadow-lg hover:bg-green-700">
+    🚀 Explore Live
+  </a>
 
   <!-- Footer -->
   <footer class="border-t border-zinc-200 dark:border-zinc-800">
@@ -273,7 +496,7 @@ dfx stop                   # Stop replica</code></pre>
       themeBtn?.addEventListener('click', () => toggleTheme());
 
       const demoBtn = document.getElementById('watchDemoBtn');
-      const demoEl  = document.getElementById('demo');
+      const demoEl = document.getElementById('demo');
       demoBtn?.addEventListener('click', (e) => {
         e.preventDefault();
         demoEl?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -294,4 +517,5 @@ dfx stop                   # Stop replica</code></pre>
     });
   </script>
 </body>
+
 </html>
